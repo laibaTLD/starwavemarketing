@@ -23,7 +23,8 @@
 .heading {
   font-family: 'Fulco', Georgia, serif;
   font-weight: bold;
-  line-height: 1.2;
+  font-size: 20rem;
+  line-height: 0.1;
 }
 
 .sub-heading {
