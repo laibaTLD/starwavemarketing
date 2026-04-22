@@ -18,6 +18,7 @@
   --color-metallic-gray: #b7b7b7;
   --font-helvetica: 'Helvetica Bold', Arial, sans-serif;
   --font-fulco: 'Fulco', Georgia, serif;
+  --font-michroma: 'Michroma', sans-serif;
 }
 
 .heading {
@@ -39,6 +40,10 @@
 
 .font-fulco {
   font-family: 'Fulco', Georgia, serif;
+}
+
+.font-michroma {
+  font-family: 'Michroma', sans-serif;
 }
 
 .paragraph {

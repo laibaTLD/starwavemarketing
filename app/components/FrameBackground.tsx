@@ -22,7 +22,7 @@ export default function FrameBackground() {
 
       for (let i = 1; i <= TOTAL_FRAMES; i++) {
         const img = new Image();
-        img.src = `${FRAME_PREFIX}${i}.png`;
+        img.src = `${FRAME_PREFIX}${i}.webp`;
         img.onload = () => {
           loadedCount++;
           if (loadedCount === TOTAL_FRAMES) {
@@ -93,14 +93,35 @@ export default function FrameBackground() {
       end: "bottom bottom",
       scrub: 1,
       onUpdate: (self) => {
-        const frameIndex = Math.min(
-          Math.floor(self.progress * (TOTAL_FRAMES - 1)),
-          TOTAL_FRAMES - 1
-        );
-        obj.frame = frameIndex;
+        // Define the active range for frame animation (e.g., first 60% of scroll)
+        const activeRange = 0.6; // 60% of the total scroll
+        const activeProgress = Math.min(self.progress / activeRange, 1);
+        
+        if (self.progress <= activeRange) {
+          // Show frames while in active range
+          const frameIndex = Math.min(
+            Math.floor(activeProgress * (TOTAL_FRAMES - 1)),
+            TOTAL_FRAMES - 1
+          );
+          obj.frame = frameIndex;
 
-        if (images[frameIndex]) {
-          drawImageCover(images[frameIndex]);
+          if (images[frameIndex]) {
+            drawImageCover(images[frameIndex]);
+          }
+        } else {
+          // Very fast fade to clean background after active range
+          const fadeProgress = Math.min((self.progress - activeRange) / 0.05, 1); // Fade over 5% of scroll
+          const opacity = Math.max(0, 1 - fadeProgress);
+          
+          // Clear canvas with fade effect
+          ctx.fillStyle = `rgba(0, 0, 0, ${1 - opacity})`;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          
+          if (opacity > 0 && images[TOTAL_FRAMES - 1]) {
+            ctx.globalAlpha = opacity;
+            drawImageCover(images[TOTAL_FRAMES - 1]);
+            ctx.globalAlpha = 1;
+          }
         }
       },
     });
@@ -109,9 +130,27 @@ export default function FrameBackground() {
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      const currentFrame = obj.frame;
-      if (images[currentFrame]) {
-        drawImageCover(images[currentFrame]);
+      
+      // Get current scroll progress to determine what to show
+      if (containerRef.current) {
+        const scrollProgress = ScrollTrigger.positionInViewport(containerRef.current, "top") / window.innerHeight;
+        const activeRange = 0.6;
+        
+        if (scrollProgress <= activeRange) {
+          // Show current frame if in active range
+          const currentFrame = obj.frame;
+          if (images[currentFrame]) {
+            drawImageCover(images[currentFrame]);
+          }
+        } else {
+          // Show clean background if past active range
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+      } else {
+        // Fallback: show clean background if container ref is not available
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
     };
 

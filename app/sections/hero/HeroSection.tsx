@@ -262,13 +262,13 @@ export default function HeroSection() {
       {/* ── HERO HUB (Z:40) ── */}
       <h1
         ref={headingRef}
-        className="heading metallic-text glow-metal"
+        className="font-michroma heading metallic-text glow-metal"
         style={{
           position: "relative",
           zIndex: 80,
           textAlign: "center",
-          fontSize: "clamp(5rem, 18vw, 20rem)",
-          lineHeight: 0.6,
+          fontSize: "clamp(1rem, 6vw, 6rem)",
+          lineHeight: 0.9,
           pointerEvents: "none",
           willChange: "transform",
           textTransform: "uppercase",
