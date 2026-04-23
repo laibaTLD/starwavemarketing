@@ -10,9 +10,10 @@ if (typeof window !== "undefined") {
 
 interface MissionManifestProps {
   onBack?: () => void;
+  onLaunch?: () => void;
 }
 
-export default function MissionManifest({ onBack }: MissionManifestProps) {
+export default function MissionManifest({ onBack, onLaunch }: MissionManifestProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const shuttleRef = useRef<HTMLDivElement>(null);
   const [selectedServices, setSelectedServices] = useState<number[]>([]);
@@ -20,7 +21,7 @@ export default function MissionManifest({ onBack }: MissionManifestProps) {
 
   // --- EXIT SEQUENCES ---
   const handleLaunch = () => {
-    const tl = gsap.timeline({ onComplete: onBack });
+    const tl = gsap.timeline({ onComplete: onLaunch });
     
     tl.to(shuttleRef.current, { opacity: 1, scale: 1, duration: 0.2 })
       .to(".launch-btn", { backgroundColor: "#fff", color: "#000", scale: 0.9, duration: 0.1 })

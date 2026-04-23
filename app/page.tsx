@@ -17,9 +17,11 @@ import ServicesSection from "./sections/service/servicessection";
 import CompanyDetailsSection from "./sections/company-details/company-details";
 import CTASection from "./sections/cta/ctasection";
 import MissionManifest from "./sections/mission-manifest/missionManifest";
+import OrbitalView from "./sections/final-stage/orbital-view";
 
 export default function Home() {
   const [isLaunched, setIsLaunched] = useState(false);
+  const [isOrbital, setIsOrbital] = useState(false);
   const mainRef = useRef<HTMLDivElement>(null);
 
   const handleLaunch = () => {
@@ -27,6 +29,22 @@ export default function Home() {
     ScrollTrigger.getAll().forEach(t => t.kill());
     setIsLaunched(true);
     window.scrollTo(0, 0);
+  };
+
+  const handleOrbital = () => {
+    // Kill all active ScrollTriggers before switching state to prevent removeChild errors
+    ScrollTrigger.getAll().forEach(t => t.kill());
+    setIsOrbital(true);
+    window.scrollTo(0, 0);
+  };
+
+  const handleBackFromManifest = () => {
+    setIsLaunched(false);
+  };
+
+  const handleBackFromOrbital = () => {
+    setIsOrbital(false);
+    setIsLaunched(false);
   };
 
   useEffect(() => {
@@ -42,7 +60,7 @@ export default function Home() {
       <FrameBackground />
       
       <main className="relative text-white">
-        {!isLaunched ? (
+        {!isLaunched && !isOrbital ? (
           <div key="landing-view">
             <HeroSection />
             <div className="h-[100vh]"></div>
@@ -53,9 +71,13 @@ export default function Home() {
             <CompanyDetailsSection />
             <CTASection onLaunch={handleLaunch} />
           </div>
-        ) : (
+        ) : isLaunched && !isOrbital ? (
           <div key="manifest-view">
-            <MissionManifest onBack={() => setIsLaunched(false)} />
+            <MissionManifest onBack={handleBackFromManifest} onLaunch={handleOrbital} />
+          </div>
+        ) : (
+          <div key="orbital-view">
+            <OrbitalView onBack={handleBackFromOrbital} />
           </div>
         )}
       </main>
