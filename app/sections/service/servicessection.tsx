@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -17,8 +17,21 @@ export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const starRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const smallStarsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [starPositions, setStarPositions] = useState<{x: number, y: number}[]>([]);
 
   useEffect(() => {
+    // Initialize star positions on client side to prevent hydration mismatch
+    const positions = [...Array(5)].map((_, index) => {
+      const angle = (index / 5) * Math.PI * 2;
+      const radius = 20;
+      return {
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius
+      };
+    });
+    setStarPositions(positions);
+
     const section = sectionRef.current;
     if (!section || !starRef.current) return;
 
@@ -26,6 +39,15 @@ export default function ServicesSection() {
     const ySet = gsap.quickSetter(starRef.current, "y", "px");
     const pos = { x: 0, y: 0 };
     const mouse = { x: 0, y: 0 };
+
+    // Small stars follow logic
+    const smallStarsPos = smallStarsRef.current.map(() => ({ x: 0, y: 0 }));
+    const xSetSmallStars = smallStarsRef.current.map(star => 
+      star ? gsap.quickSetter(star, "x", "px") : null
+    );
+    const ySetSmallStars = smallStarsRef.current.map(star => 
+      star ? gsap.quickSetter(star, "y", "px") : null
+    );
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = section.getBoundingClientRect();
@@ -57,6 +79,29 @@ export default function ServicesSection() {
       pos.y += (mouse.y - pos.y) * 0.08;
       xSet(pos.x);
       ySet(pos.y);
+
+      // Animate small stars to move with the main star
+      smallStarsPos.forEach((starPos, index) => {
+        const speed = 0.08; // Same speed as main star
+        
+        // Create tight circular formation around main star
+        const angle = (index / 5) * Math.PI * 2 + (Date.now() * 0.0001 * (index + 1)); // Slow rotation
+        const radius = 15 + (index * 6); // Tight radius - close to main star
+        const offsetX = Math.cos(angle) * radius;
+        const offsetY = Math.sin(angle) * radius;
+        
+        // Move with main star position + offset
+        const targetX = pos.x + offsetX;
+        const targetY = pos.y + offsetY;
+        
+        starPos.x += (targetX - starPos.x) * speed;
+        starPos.y += (targetY - starPos.y) * speed;
+        
+        if (xSetSmallStars[index] && ySetSmallStars[index]) {
+          xSetSmallStars[index](starPos.x);
+          ySetSmallStars[index](starPos.y);
+        }
+      });
     };
 
     section.addEventListener("mousemove", handleMouseMove);
@@ -83,7 +128,7 @@ export default function ServicesSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-screen bg-[#020406] py-16 md:py-32 px-4 md:px-12 overflow-hidden flex items-center"
+      className="relative min-h-screen bg-[#020406] py-10 px-4 md:px-12 overflow-hidden flex items-center"
     >
       {/* THE SEARCHLIGHT STAR */}
       <div 
@@ -98,6 +143,31 @@ export default function ServicesSection() {
         </div>
       </div>
 
+      {/* SMALL STARS THAT FOLLOW CURSOR */}
+      {starPositions.map((position, index) => (
+        <div
+          key={index}
+          ref={el => { smallStarsRef.current[index] = el; }}
+          className="absolute pointer-events-none z-40"
+          style={{
+            top: '50%',
+            left: '50%',
+            transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`
+          }}
+        >
+          <div 
+            className="bg-blue-400 star-shape"
+            style={{
+              width: `${3 + index * 1.5}px`,
+              height: `${3 + index * 1.5}px`,
+              opacity: 0.4 + (index * 0.1),
+              boxShadow: `0 0 ${8 + index * 3}px rgba(59, 130, 246, 0.6)`
+            }}
+          />
+        </div>
+      ))}
+
+      
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
         
         {/* LEFT SIDE: COMMAND TEXT */}

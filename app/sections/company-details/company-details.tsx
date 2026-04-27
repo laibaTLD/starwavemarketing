@@ -213,7 +213,7 @@ export default function CompanyDetailsSection() {
                    <div className="absolute w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] border border-white/20 rounded-full" />
                 </div>
                 
-                <div 
+                <div
                   ref={rocketRef}
                   className={`w-16 h-32 sm:w-20 sm:h-40 relative z-20 transition-all ${isLaunched ? 'pointer-events-none' : 'cursor-pointer hover:scale-110'}`}
                   style={{ willChange: "transform" }}
@@ -223,6 +223,16 @@ export default function CompanyDetailsSection() {
                     <RocketSVG />
                   </div>
                 </div>
+
+                {/* CLICK TO LAUNCH INDICATOR */}
+                {!isLaunched && (
+                  <div className="absolute -bottom-12 sm:-bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center animate-pulse">
+                    <span className="text-[10px] sm:text-xs text-blue-400 font-mono tracking-[0.3em] uppercase whitespace-nowrap">
+                      [ Click to Launch ]
+                    </span>
+                    <div className="w-px h-4 bg-blue-400/50 mt-1" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
