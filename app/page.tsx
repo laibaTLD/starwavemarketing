@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 
 // Only register once
 if (typeof window !== "undefined") {
@@ -27,6 +28,7 @@ export default function Home() {
   const handleLaunch = () => {
     // Kill all active ScrollTriggers before switching state to prevent removeChild errors
     ScrollTrigger.getAll().forEach(t => t.kill());
+    gsap.killTweensOf("*");
     setIsLaunched(true);
     window.scrollTo(0, 0);
   };
@@ -34,6 +36,7 @@ export default function Home() {
   const handleOrbital = () => {
     // Kill all active ScrollTriggers before switching state to prevent removeChild errors
     ScrollTrigger.getAll().forEach(t => t.kill());
+    gsap.killTweensOf("*");
     setIsOrbital(true);
     window.scrollTo(0, 0);
   };
@@ -48,10 +51,19 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      autoRaf: true,
+    });
+
+    // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+    lenis.on('scroll', ScrollTrigger.update);
+
     // Global cleanup on unmount
     return () => {
       gsap.killTweensOf("*");
       ScrollTrigger.getAll().forEach(t => t.kill());
+      lenis.destroy();
     };
   }, []);
 

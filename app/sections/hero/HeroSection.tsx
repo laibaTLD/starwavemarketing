@@ -167,31 +167,67 @@ export default function HeroSection() {
          ────────────────────────────────────── */
 
       // 1. TEXT PLANE (.heading): 1.0x Baseline Speed
-      gsap.to(headingRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-        y: -600, // Standard scroll
-        ease: "none",
-      });
+      gsap.fromTo(headingRef.current, 
+        { y: 0 }, // Start position
+        {
+          y: -300, // End position - Reduced scroll amount for centered layout
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
+
+      // 1.5. SUBHEADING: Slightly slower than heading
+      gsap.fromTo(subHeadingRef.current,
+        { y: 0 }, // Start position
+        {
+          y: -200, // End position - Slower scroll for subheading
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
+
+      // 1.7. CTA BUTTON: Even slower for depth
+      gsap.fromTo(ctaButtonRef.current,
+        { y: 0 }, // Start position
+        {
+          y: -150, // End position - Slowest scroll for CTA button
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
 
       // 2. SLOW PLANE (.asset-mg): 0.4x Relative Speed
       // Drift -200px to -400px over the scroll range
-      gsap.to([satelliteRef.current, asteroidRef.current], {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 2,
-        },
-        y: -300,
-        x: (i) => (i === 0 ? 80 : -50), // Subtle drift
-        rotation: (i) => (i === 0 ? -15 : 20),
-        ease: "none",
-      });
+      gsap.fromTo([satelliteRef.current, asteroidRef.current],
+        { y: 0, x: 0, rotation: 0 }, // Start position
+        {
+          y: -300,
+          x: (i) => (i === 0 ? 80 : -50), // Subtle drift
+          rotation: (i) => (i === 0 ? -15 : 20),
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 2,
+          },
+        }
+      );
 
     }, sectionRef);
 
@@ -253,32 +289,88 @@ export default function HeroSection() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "flex-start",
-        paddingTop: "1vh",
+        paddingTop: "10vh",
         overflow: "hidden",
         zIndex: 1,
       }}
     >
 
       {/* ── HERO HUB (Z:40) ── */}
-      <h1
-        ref={headingRef}
-        className="font-michroma heading metallic-text glow-metal"
-        style={{
-          position: "relative",
-          zIndex: 80,
-          textAlign: "center",
-          fontSize: "clamp(1rem, 6vw, 6rem)",
-          lineHeight: 0.9,
-          pointerEvents: "none",
-          willChange: "transform",
-          textTransform: "uppercase",
-          textShadow: "0 0 15px rgba(255, 140, 0, 0.3)",
-        }}
-      >
-        Starwave 
-        <br />
-        Marketing
-      </h1>
+      <div style={{ position: "relative", zIndex: 80, textAlign: "center" }}>
+        <h1
+          ref={headingRef}
+          className="font-michroma heading metallic-text glow-metal"
+          style={{
+            position: "relative",
+            zIndex: 80,
+            textAlign: "center",
+            fontSize: "clamp(1rem, 6vw, 6rem)",
+            lineHeight: 0.9,
+            pointerEvents: "none",
+            willChange: "transform",
+            textTransform: "uppercase",
+            textShadow: "0 0 15px rgba(255, 140, 0, 0.3)",
+            marginBottom: "1rem",
+          }}
+        >
+          Starwave 
+          <br />
+          Marketing
+        </h1>
+
+        {/* ── TAGLINE (UNDER MARKETING) ── */}
+        <p
+          ref={subHeadingRef}
+          className="font-helvetica text-metallic-gray"
+          style={{
+            position: "relative",
+            zIndex: 40,
+            fontSize: "clamp(0.8rem, 2vw, 1rem)",
+            maxWidth: "600px",
+            letterSpacing: "0.2rem",
+            textAlign: "center",
+            marginBottom: "2rem",
+          }}
+        >
+          Creative digital experiences that captivate and convert
+        </p>
+
+        {/* ── CTA BUTTON (GLASSMORPHIC) ── */}
+        <button
+          ref={ctaButtonRef}
+          className="font-helvetica lens-flare-effect"
+          style={{
+            position: "relative",
+            zIndex: 40,
+            padding: "0.75rem 1.875rem", // 25% reduction from 1rem 2.5rem
+            fontSize: "clamp(0.675rem, 1.5vw, 0.825rem)", // 25% reduction from 0.9rem 2vw 1.1rem
+            fontWeight: "bold",
+            textTransform: "uppercase",
+            letterSpacing: "0.15rem",
+            color: "#f0f0f0", // Light silver/white text
+            textShadow: "0 0 8px rgba(255, 215, 0, 0.3)", // Subtle gold text-shadow
+            background: "rgba(40, 40, 45, 0.7)", // Semi-transparent deep charcoal
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(100, 150, 255, 0.4)", // Faint blue border
+            borderRadius: "50px",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            boxShadow: "0 0 25px rgba(100, 150, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)", // Blue outer glow
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.border = "1px solid rgba(100, 150, 255, 0.8)";
+            e.currentTarget.style.boxShadow = "0 0 50px rgba(100, 150, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.1)";
+            e.currentTarget.style.transform = "translateY(-2px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.border = "1px solid rgba(100, 150, 255, 0.4)";
+            e.currentTarget.style.boxShadow = "0 0 25px rgba(100, 150, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)";
+            e.currentTarget.style.transform = "translateY(0)";
+          }}
+        >
+          Launch Project
+        </button>
+      </div>
 
       {/* ── TACTICAL MID-GROUND (Z:30) ── */}
       {/* Satellite (Left Top Corner - Scaled Down 30%) */}
@@ -432,68 +524,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* ── TAGLINE (UNDER MARKETING) ── */}
-      <p
-        ref={subHeadingRef}
-        className="font-helvetica text-metallic-gray"
-        style={{
-          position: "absolute",
-          top: "auto",
-          bottom: "auto",
-          left: "50%",
-          transform: "translateX(-50%)",
-          marginTop: "1rem",
-          zIndex: 40,
-          fontSize: "clamp(0.8rem, 2vw, 1rem)",
-          maxWidth: "600px",
-          letterSpacing: "0.2rem",
-          textAlign: "center",
-        }}
-      >
-        Creative digital experiences that captivate and convert
-      </p>
-
-      {/* ── CTA BUTTON (GLASSMORPHIC) ── */}
-      <button
-        ref={ctaButtonRef}
-        className="font-helvetica lens-flare-effect"
-        style={{
-          position: "absolute",
-          top: "auto",
-          bottom: "auto",
-          left: "50%",
-          transform: "translateX(-50%)",
-          marginTop: "3rem",
-          zIndex: 40,
-          padding: "0.75rem 1.875rem", // 25% reduction from 1rem 2.5rem
-          fontSize: "clamp(0.675rem, 1.5vw, 0.825rem)", // 25% reduction from 0.9rem 2vw 1.1rem
-          fontWeight: "bold",
-          textTransform: "uppercase",
-          letterSpacing: "0.15rem",
-          color: "#f0f0f0", // Light silver/white text
-          textShadow: "0 0 8px rgba(255, 215, 0, 0.3)", // Subtle gold text-shadow
-          background: "rgba(40, 40, 45, 0.7)", // Semi-transparent deep charcoal
-          backdropFilter: "blur(10px)",
-          border: "1px solid rgba(100, 150, 255, 0.4)", // Faint blue border
-          borderRadius: "50px",
-          cursor: "pointer",
-          transition: "all 0.3s ease",
-          boxShadow: "0 0 25px rgba(100, 150, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)", // Blue outer glow
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.border = "1px solid rgba(100, 150, 255, 0.8)";
-          e.currentTarget.style.boxShadow = "0 0 50px rgba(100, 150, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.1)";
-          e.currentTarget.style.transform = "translateX(-50%) translateY(-2px)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.border = "1px solid rgba(100, 150, 255, 0.4)";
-          e.currentTarget.style.boxShadow = "0 0 25px rgba(100, 150, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)";
-          e.currentTarget.style.transform = "translateX(-50%) translateY(0)";
-        }}
-      >
-        Launch Project
-      </button>
-
+      
       {/* ── HUD GRID (TWO-COLUMN TECHNICAL DISPLAY) ── */}
       <div
         ref={hudGridRef}
