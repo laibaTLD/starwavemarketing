@@ -83,7 +83,7 @@ export default function ServicesSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-screen bg-[#020406] py-32 px-4 md:px-12 overflow-hidden flex items-center"
+      className="relative min-h-screen bg-[#020406] py-16 md:py-32 px-4 md:px-12 overflow-hidden flex items-center"
     >
       {/* THE SEARCHLIGHT STAR */}
       <div 
@@ -101,11 +101,11 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
         
         {/* LEFT SIDE: COMMAND TEXT */}
-        <div className="lg:col-span-4 flex flex-col justify-center">
-          <h2 className="font-michroma text-5xl md:text-6xl text-white leading-none uppercase tracking-tighter mb-6">
+        <div className="lg:col-span-4 flex flex-col justify-center text-center lg:text-left mb-8 lg:mb-0">
+          <h2 className="font-michroma text-4xl md:text-5xl lg:text-6xl text-white leading-none uppercase tracking-tighter mb-6">
             OUR<br /><span className="metallic-text">SERVICES</span>
           </h2>
-          <div className="h-[2px] w-24 bg-gradient-to-r from-[#3B82F6] to-transparent mb-6" />
+          <div className="h-[2px] w-24 bg-gradient-to-r from-[#3B82F6] to-transparent mb-6 mx-auto lg:mx-0" />
           <p className="text-gray-500 font-helvetica text-xs uppercase tracking-widest leading-loose">
             Targeting human behavior <br /> 
             // Neural clusters online <br />
@@ -122,29 +122,29 @@ export default function ServicesSection() {
               className="service-node group relative bg-[#0a0c12]/60 border border-white/10 backdrop-blur-md p-1 hover:border-[#3B82F6]/50 transition-colors duration-500"
               style={{ clipPath: "polygon(0 0, 95% 0, 100% 25%, 100% 100%, 5% 100%, 0 75%)" }}
             >
-              <div className="relative flex flex-col md:flex-row items-center gap-8 p-8 bg-gradient-to-br from-white/[0.03] to-transparent h-full w-full">
+              <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-8 p-4 md:p-8 bg-gradient-to-br from-white/[0.03] to-transparent h-full w-full">
                 
                 {/* Technical Node ID */}
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 flex items-center justify-center border border-white/10 group-hover:border-[#3B82F6]/50 transition-all">
-                    <span className="font-helvetica text-2xl font-bold text-white group-hover:text-[#3B82F6]">{service.id}</span>
+                <div className="flex md:flex-col items-center gap-2 md:gap-0">
+                  <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center border border-white/10 group-hover:border-[#3B82F6]/50 transition-all">
+                    <span className="font-helvetica text-xl md:text-2xl font-bold text-white group-hover:text-[#3B82F6]">{service.id}</span>
                   </div>
-                  <div className="mt-2 w-[1px] h-8 bg-gradient-to-b from-white/20 to-transparent" />
+                  <div className="hidden md:block mt-2 w-[1px] h-8 bg-gradient-to-b from-white/20 to-transparent" />
                 </div>
 
                 {/* Info Cluster */}
-                <div className="flex-grow">
-                  <div className="flex items-center gap-4 mb-2">
+                <div className="flex-grow text-center md:text-left">
+                  <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-2">
                     <span className="font-helvetica text-[9px] text-[#3B82F6] tracking-[0.4em] uppercase">{service.category}</span>
-                    <div className="flex-grow h-[1px] bg-white/5" />
+                    <div className="hidden md:block flex-grow h-[1px] bg-white/5" />
                     <span className="font-helvetica text-[9px] text-white/30 uppercase">{service.status}</span>
                   </div>
                   
-                  <h3 className="font-helvetica text-2xl md:text-4xl font-bold text-white group-hover:translate-x-2 transition-transform duration-500">
+                  <h3 className="font-helvetica text-xl sm:text-2xl md:text-4xl font-bold text-white group-hover:translate-x-2 transition-transform duration-500">
                     {service.title}
                   </h3>
                   
-                  <p className="mt-2 text-gray-400 text-sm max-w-lg leading-relaxed group-hover:text-gray-200 transition-colors">
+                  <p className="mt-2 text-gray-400 text-xs sm:text-sm max-w-lg leading-relaxed group-hover:text-gray-200 transition-colors">
                     {service.desc}
                   </p>
                 </div>

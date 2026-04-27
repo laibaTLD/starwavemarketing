@@ -162,7 +162,7 @@ export default function CompanyDetailsSection() {
 
       <section 
         ref={containerRef} 
-        className="relative w-full h-screen bg-[#020406] overflow-hidden flex items-center justify-center"
+        className="relative w-full min-h-screen bg-[#020406] overflow-hidden flex items-center justify-center py-8 md:py-0"
       >
         {/* BACKGROUND HUD LAYER */}
         <div className="absolute inset-0 grid-bg opacity-30" />
@@ -177,7 +177,7 @@ export default function CompanyDetailsSection() {
               <span className="font-mono text-[10px] text-blue-400 tracking-[0.3em] uppercase">System Online</span>
             </div>
 
-            <h2 className="font-michroma text-white text-5xl md:text-6xl leading-[0.85] uppercase mb-10 transition-heading">
+            <h2 className="font-michroma text-white text-4xl sm:text-5xl md:text-6xl leading-[0.85] uppercase mb-6 md:mb-10 transition-heading">
               Digital <br /> 
               <span className="metallic-text">Excellence</span>
             </h2>
@@ -206,16 +206,16 @@ export default function CompanyDetailsSection() {
               <div className="text-center relative">
                 {/* ORBITAL RINGS CLOSE TO ROCKET */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                   <div className="data-ring-inner absolute w-[300px] h-[300px] border-2 border-dashed border-blue-400/60 rounded-full" />
-                   <div className="data-ring-outer absolute w-[400px] h-[400px] border-2 border-blue-300/40 rounded-full">
-                      <div className="absolute top-0 left-1/2 w-3 h-3 bg-blue-400 rounded-full neon-border" />
+                   <div className="data-ring-inner absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] border-2 border-dashed border-blue-400/60 rounded-full" />
+                   <div className="data-ring-outer absolute w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] border-2 border-blue-300/40 rounded-full">
+                      <div className="absolute top-0 left-1/2 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-full neon-border" />
                    </div>
-                   <div className="absolute w-[200px] h-[200px] border border-white/20 rounded-full" />
+                   <div className="absolute w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] border border-white/20 rounded-full" />
                 </div>
                 
                 <div 
                   ref={rocketRef}
-                  className={`w-20 h-40 relative z-20 transition-all ${isLaunched ? 'pointer-events-none' : 'cursor-pointer hover:scale-110'}`}
+                  className={`w-16 h-32 sm:w-20 sm:h-40 relative z-20 transition-all ${isLaunched ? 'pointer-events-none' : 'cursor-pointer hover:scale-110'}`}
                   style={{ willChange: "transform" }}
                   onClick={launchRocket}
                 >
@@ -230,9 +230,9 @@ export default function CompanyDetailsSection() {
 
         
         {/* HUD FOOTER DETAIL */}
-        <div className="absolute bottom-10 left-10 md:left-20 flex items-center gap-10">
+        <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 md:left-20 flex items-center gap-6 sm:gap-10">
           <div className="flex flex-col gap-1">
-            <span className="text-[10px] text-white/20 uppercase sub-heading tracking-widest">Core Systems</span>
+            <span className="text-[9px] sm:text-[10px] text-white/20 uppercase sub-heading tracking-widest">Core Systems</span>
             <div className="flex gap-1">
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="w-1 h-3 bg-blue-500/30" style={{ opacity: 0.3 + (i * 0.2) }} />

@@ -224,29 +224,29 @@ export default function CTASection({ onLaunch }: CTASectionProps) {
 
       <section 
         ref={sectionRef}
-        className="relative w-full min-h-screen bg-[#020406] overflow-hidden flex items-center justify-center"
+        className="relative w-full min-h-screen bg-[#020406] overflow-hidden flex items-center justify-center px-4 md:px-8 lg:px-20"
       >
         {/* BACKGROUND GRID */}
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)]" />
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-20 text-center">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-20 text-center">
           
           {/* 1. THE HEADER SEQUENCE */}
           <div 
             ref={headerRef}
-            className="mb-8 space-y-2"
+            className="mb-6 md:mb-8 space-y-2"
           >
             {/* Prompt A (Status) */}
             <div 
               ref={statusBadgeRef}
-              className="font-mono text-xs text-blue-400 tracking-[0.3em] uppercase opacity-80"
+              className="font-mono text-[10px] md:text-xs text-blue-400 tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-80"
             >
               &gt; SYSTEM_CHECK: TARGET_ACQUIRED
             </div>
             
             {/* Prompt B (The Hook) */}
-            <div className="font-mono text-xs text-cyan-400 tracking-[0.3em] uppercase opacity-80">
+            <div className="font-mono text-[10px] md:text-xs text-cyan-400 tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-80">
               [ PHASE: FINAL_APPROACH ]
             </div>
           </div>
@@ -254,29 +254,29 @@ export default function CTASection({ onLaunch }: CTASectionProps) {
           {/* 2. MAIN HEADING */}
           <h1 
             ref={mainHeadingRef}
-            className="font-michroma text-white text-6xl md:text-8xl leading-[0.85] uppercase mb-16 transition-all"
+            className="font-michroma text-white text-3xl sm:text-5xl md:text-6xl lg:text-8xl leading-[0.9] md:leading-[0.85] uppercase mb-8 md:mb-16 transition-all"
           >
             TRANSMIT YOUR <span className="metallic-text">VISION</span>
           </h1>
 
           {/* 3. LATERAL READOUTS CONTAINER */}
-          <div className="relative mb-16">
+          <div className="relative mb-8 md:mb-16">
             
             {/* LEFT SIDE - SYSTEM LOGS */}
             <div 
               ref={leftLogsRef}
-              className="absolute left-0 top-0 text-left space-y-1"
+              className="hidden md:block absolute left-0 top-0 text-left space-y-1"
             >
-              <div className="log-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="log-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 &gt; UPLINK_ESTABLISHED...
               </div>
-              <div className="log-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="log-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 &gt; BANDWIDTH: OPTIMAL
               </div>
-              <div className="log-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="log-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 &gt; ENCRYPTION: AES-256_ACTIVE
               </div>
-              <div className="log-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="log-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 &gt; READY_TO_BROADCAST
               </div>
             </div>
@@ -284,18 +284,18 @@ export default function CTASection({ onLaunch }: CTASectionProps) {
             {/* RIGHT SIDE - METADATA */}
             <div 
               ref={rightMetadataRef}
-              className="absolute right-0 top-0 text-right space-y-1"
+              className="hidden md:block absolute right-0 top-0 text-right space-y-1"
             >
-              <div className="meta-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="meta-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 LOC: [USER_CURRENT_SECTOR]
               </div>
-              <div className="meta-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="meta-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 TIME: [T-MINUS_00:00:00]
               </div>
-              <div className="meta-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="meta-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 MISSION: DIGITAL_ASCENSION
               </div>
-              <div className="meta-line font-mono text-[10px] text-gray-500 opacity-70">
+              <div className="meta-line font-mono text-[8px] lg:text-[10px] text-gray-500 opacity-70">
                 CAPACITY: 2_SLOTS_REMAINING
               </div>
             </div>
@@ -307,7 +307,7 @@ export default function CTASection({ onLaunch }: CTASectionProps) {
             {/* Above Button - Input Required */}
             <div 
               ref={inputPromptRef}
-              className="font-mono text-xs text-orange-400 tracking-[0.4em] uppercase opacity-80"
+              className="font-mono text-[10px] md:text-xs text-orange-400 tracking-[0.2em] md:tracking-[0.4em] uppercase opacity-80"
             >
               [ INPUT_REQUIRED: INITIATE_PROJECT ]
             </div>
@@ -315,7 +315,7 @@ export default function CTASection({ onLaunch }: CTASectionProps) {
             {/* CTA Button */}
             <button
               ref={ctaButtonRef}
-              className="group relative px-12 py-4 bg-white text-black font-michroma uppercase text-lg tracking-widest hover:bg-blue-400 transition-all duration-300 neon-border pulse-glow"
+              className="group relative px-8 md:px-12 py-3 md:py-4 bg-white text-black font-michroma uppercase text-sm md:text-lg tracking-widest hover:bg-blue-400 transition-all duration-300 neon-border pulse-glow"
               onClick={() => {
                 // Add your CTA action here
                 console.log('CTA clicked - Commence Ignition');
@@ -325,27 +325,27 @@ export default function CTASection({ onLaunch }: CTASectionProps) {
               }}
             >
               COMMENCE IGNITION
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-blue-500 group-hover:bg-white transition-colors" />
+              <div className="absolute -bottom-1 -right-1 w-2 md:w-3 h-2 md:h-3 bg-blue-500 group-hover:bg-white transition-colors" />
             </button>
 
             {/* Below Button - Safety */}
             <div 
               ref={safetyRef}
-              className="font-mono text-[10px] text-gray-600 opacity-60"
+              className="font-mono text-[9px] md:text-[10px] text-gray-600 opacity-60"
             >
               &gt; NO_RECOIL_GUARANTEED // 100% SECURE
             </div>
           </div>
 
           {/* DECORATIVE CORNER BRACKETS */}
-          <div className="absolute top-10 left-10 w-8 h-[1px] bg-blue-500/50" />
-          <div className="absolute top-10 left-10 h-8 w-[1px] bg-blue-500/50" />
-          <div className="absolute top-10 right-10 w-8 h-[1px] bg-blue-500/50" />
-          <div className="absolute top-10 right-10 h-8 w-[1px] bg-blue-500/50" />
-          <div className="absolute bottom-10 left-10 w-8 h-[1px] bg-blue-500/50" />
-          <div className="absolute bottom-10 left-10 h-8 w-[1px] bg-blue-500/50" />
-          <div className="absolute bottom-10 right-10 w-8 h-[1px] bg-blue-500/50" />
-          <div className="absolute bottom-10 right-10 h-8 w-[1px] bg-blue-500/50" />
+          <div className="absolute top-4 md:top-10 left-4 md:left-10 w-6 md:w-8 h-[1px] bg-blue-500/50" />
+          <div className="absolute top-4 md:top-10 left-4 md:left-10 h-6 md:h-8 w-[1px] bg-blue-500/50" />
+          <div className="absolute top-4 md:top-10 right-4 md:right-10 w-6 md:w-8 h-[1px] bg-blue-500/50" />
+          <div className="absolute top-4 md:top-10 right-4 md:right-10 h-6 md:h-8 w-[1px] bg-blue-500/50" />
+          <div className="absolute bottom-4 md:bottom-10 left-4 md:left-10 w-6 md:w-8 h-[1px] bg-blue-500/50" />
+          <div className="absolute bottom-4 md:bottom-10 left-4 md:left-10 h-6 md:h-8 w-[1px] bg-blue-500/50" />
+          <div className="absolute bottom-4 md:bottom-10 right-4 md:right-10 w-6 md:w-8 h-[1px] bg-blue-500/50" />
+          <div className="absolute bottom-4 md:bottom-10 right-4 md:right-10 h-6 md:h-8 w-[1px] bg-blue-500/50" />
 
         </div>
       </section>

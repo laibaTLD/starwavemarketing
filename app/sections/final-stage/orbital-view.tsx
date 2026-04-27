@@ -148,10 +148,10 @@ export default function OrbitalSuccess({ onBack }: OrbitalSuccessProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-6">
+      <div className="relative z-20 flex flex-col items-center justify-center">
         
         {/* Header */}
-        <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter mb-12">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black italic tracking-tighter mb-8 sm:mb-12 px-4">
           <span 
             className="block text-transparent bg-clip-text"
             style={{
@@ -165,11 +165,11 @@ export default function OrbitalSuccess({ onBack }: OrbitalSuccessProps) {
         </h1>
 
         {/* Status Text */}
-        <div className="space-y-4 mb-16 text-center">
-          <p className="text-xs tracking-widest uppercase text-cyan-400 opacity-80">
+        <div className="mb-8 sm:mb-16 text-center px-4">
+          <p className="text-[10px] sm:text-xs tracking-widest uppercase text-cyan-400 opacity-80">
             // SYSTEM_STABILITY: 100% //
           </p>
-          <p className="text-xs tracking-widest uppercase text-cyan-400 opacity-80">
+          <p className="text-[10px] sm:text-xs tracking-widest uppercase text-cyan-400 opacity-80">
             // COORDINATES: GEO_STATIONARY //
           </p>
         </div>
@@ -177,9 +177,9 @@ export default function OrbitalSuccess({ onBack }: OrbitalSuccessProps) {
         {/* Return Button */}
         <button 
           onClick={onBack}
-          className="group relative px-12 py-6 bg-transparent border border-white/10 backdrop-blur-md text-white font-mono text-sm tracking-widest uppercase hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 mb-16"
+          className="group relative px-8 sm:px-12 sm:py-6 bg-transparent border border-white/10 backdrop-blur-md text-white font-mono text-xs sm:text-sm tracking-widest uppercase hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 mb-8 sm:mb-16"
         >
-          <span className="relative z-10">Return to Earth</span>
+          <span className="relative z-10">Return to Space</span>
           
           {/* Hover glow effect */}
           <div 
@@ -194,12 +194,12 @@ export default function OrbitalSuccess({ onBack }: OrbitalSuccessProps) {
       </div>
 
       {/* CONTACT FORM & FOOTER SECTION */}
-      <div className="relative z-20 px-6 py-16">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="relative z-20 px-4 sm:px-6 py-12 sm:py-16">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2">
           
           {/* Contact Form */}
-          <div className="space-y-8">
-            <h2 className="text-3xl font-black text-cyan-400 tracking-wider italic">
+          <div className="space-y-6 sm:space-y-8">
+            <h2 className="text-xl sm:text-3xl font-black text-cyan-400 tracking-wider italic">
               // TRANSMISSION_PROTOCOL //
             </h2>
             
@@ -259,8 +259,8 @@ export default function OrbitalSuccess({ onBack }: OrbitalSuccessProps) {
           </div>
 
           {/* Company Information */}
-          <div className="space-y-8">
-            <h2 className="text-3xl font-black text-cyan-400 tracking-wider italic">
+          <div className="space-y-6 sm:space-y-8">
+            <h2 className="text-xl sm:text-3xl font-black text-cyan-400 tracking-wider italic">
               // STARWAVE_COMMAND //
             </h2>
             
@@ -307,12 +307,12 @@ export default function OrbitalSuccess({ onBack }: OrbitalSuccessProps) {
         </div>
 
         {/* Footer Bar */}
-        <div className="mt-16 pt-8 border-t border-cyan-400/20">
-          <div className="flex flex-col md:flex-row justify-between items-center text-xs text-cyan-400/60 font-mono">
-            <p className="tracking-widest uppercase italic mb-4 md:mb-0">
+        <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-cyan-400/20">
+          <div className="flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs text-cyan-400/60 font-mono">
+            <p className="tracking-widest uppercase italic mb-3 sm:mb-4 md:mb-0">
               // STARWAVE_DIGITAL © 2024 ORBITAL_DIVISION //
             </p>
-            <div className="flex space-x-6 tracking-widest uppercase italic">
+            <div className="flex space-x-4 sm:space-x-6 tracking-widest uppercase italic">
               <span className="hover:text-cyan-400 transition-colors cursor-pointer">Privacy</span>
               <span className="hover:text-cyan-400 transition-colors cursor-pointer">Terms</span>
               <span className="hover:text-cyan-400 transition-colors cursor-pointer">Mission</span>

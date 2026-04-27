@@ -82,70 +82,70 @@ export default function AboutSection() {
       <div className="absolute inset-0 opacity-10 pointer-events-none bg-[linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
       {/* LEFT CONTENT: Narrative Layer */}
-      <div ref={leftContentRef} className="relative z-30 w-full md:w-1/2 flex flex-col justify-center py-20">
-        <div className="animate-item mb-4">
-          <span className="font-mono text-[#FFA500] text-xs tracking-[0.5em] uppercase opacity-70">
+      <div ref={leftContentRef} className="relative z-30 w-full md:w-1/2 flex flex-col justify-center py-10 md:py-20">
+        <div className="animate-item mb-3 md:mb-4">
+          <span className="font-mono text-[#FFA500] text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.5em] uppercase opacity-70">
             System_Manifest // 0.1
           </span>
         </div>
         
-        <h2 className="animate-item text-6xl md:text-8xl font-bold text-white mb-10 tracking-tighter leading-none">
+        <h2 className="animate-item text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-6 md:mb-10 tracking-tighter leading-none">
           About <br /> <span className="font-michroma metallic-text">Starwave</span>
         </h2>
 
-        <div className="animate-item space-y-6 max-w-lg">
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-            We are pioneers in <span className="text-white font-medium">digital innovation</span>, 
-            crafting immersive experiences that transcend the boundaries between technology and creativity. 
+        <div className="animate-item space-y-4 md:space-y-6 max-w-lg">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-light">
+            We are pioneers in <span className="text-white font-medium">digital innovation</span>,
+            crafting immersive experiences that transcend the boundaries between technology and creativity.
           </p>
-          <div className="h-[1px] w-20 bg-[#FFA500]" />
-          <p className="text-lg md:text-xl text-gray-500 font-mono text-sm leading-relaxed">
-            [OBJECTIVE]: TRANSFORM BOLD IDEAS INTO EXTRAORDINARY REALITIES THROUGH 
+          <div className="h-[1px] w-16 md:w-20 bg-[#FFA500]" />
+          <p className="text-xs sm:text-sm md:text-base text-gray-500 font-mono leading-relaxed">
+            [OBJECTIVE]: TRANSFORM BOLD IDEAS INTO EXTRAORDINARY REALITIES THROUGH
             HIGH-VELOCITY DESIGN ARCHITECTURE.
           </p>
         </div>
       </div>
 
       {/* RIGHT CONTENT: Dynamic HUD Layer (Z-Index 40 for max visibility) */}
-      <div ref={rightContentRef} className="relative w-full md:w-1/2 h-[50vh] md:h-screen flex items-center justify-center z-40">
-        <div className="relative w-full max-w-md aspect-square">
-          
+      <div ref={rightContentRef} className="relative w-full md:w-1/2 h-[35vh] sm:h-[40vh] md:h-screen flex items-center justify-center z-40 mt-4 md:mt-0">
+        <div className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-md aspect-square">
+
           {/* Central Technical Core Glow - Highly visible flare */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-cyan-400/20 rounded-full blur-[60px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/50 rounded-full blur-[10px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 bg-cyan-400/20 rounded-full blur-[30px] sm:blur-[40px] md:blur-[60px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 sm:w-4 h-3 sm:h-4 bg-white/50 rounded-full blur-[8px] sm:blur-[10px]" />
 
           {/* DYNAMIC HUD RINGS - Visibility increased */}
           {/* Increased opacity from /20 to /60 */}
-          <div className="absolute inset-0 border border-cyan-500/60 rounded-full animate-[spin_20s_linear_infinite]" />
+          <div className="absolute inset-0 sm:inset-1 md:inset-2 border border-cyan-500/60 rounded-full animate-[spin_20s_linear_infinite]" />
           {/* Increased opacity from /10 to /40 */}
-          <div className="absolute inset-8 border border-orange-500/40 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-          
+          <div className="absolute inset-3 sm:inset-4 md:inset-8 border border-orange-500/40 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+
           {/* DYNAMIC SCANNERS - Bold and visible */}
-          <div className="absolute top-0 left-0 w-full h-[3px] bg-cyan-400 shadow-[0_0_25px_#00ffff] animate-scan" />
+          <div className="absolute top-0 left-0 w-full h-[2px] sm:h-[3px] bg-cyan-400 shadow-[0_0_15px_#00ffff] sm:shadow-[0_0_25px_#00ffff] animate-scan" />
           <div className="absolute w-[1px] h-full left-1/2 bg-white/5 top-0" />
           <div className="absolute h-[1px] w-full top-1/2 bg-white/5 left-0" />
 
           {/* FLOATING SHARDS - Visibility increased from /40 */}
           {[1, 2, 3, 4, 5].map((i) => (
-            <div 
+            <div
               key={i}
-              className={`absolute hud-shard w-2 h-2 bg-white rotate-45 animate-pulse`}
+              className={`absolute hud-shard w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rotate-45 animate-pulse`}
               style={{
                 opacity: 0.7, // Increased from opacity-40
                 top: `${15 * i}%`,
                 left: `${10 * i + 10}%`,
                 animationDelay: `${i * 0.4}s`,
-                filter: "drop-shadow(0 0 10px rgba(255,255,255,0.7))"
+                filter: "drop-shadow(0 0 8px rgba(255,255,255,0.7))"
               }}
             />
           ))}
 
           {/* HIGHLY VISIBLE TECHNICAL READOUT */}
-          <div className="absolute bottom-12 right-0 font-mono text-cyan-300 text-[11px] uppercase space-y-2 text-right bg-black/50 p-4 rounded-lg border border-cyan-500/30 backdrop-blur-sm">
+          <div className="absolute bottom-4 sm:bottom-8 md:bottom-12 right-0 font-mono text-cyan-300 text-[8px] sm:text-[9px] md:text-[11px] uppercase space-y-0.5 sm:space-y-1 md:space-y-2 text-right bg-black/50 p-1.5 sm:p-2 md:p-4 rounded-lg border border-cyan-500/30 backdrop-blur-sm">
             <p className="opacity-70">Lat: 40.7128 N</p>
             <p className="opacity-70">Long: 74.0060 W</p>
-            <p className="text-white font-bold tracking-widest"> [STATUS: SYNCHRONIZED_]</p>
-            <div className="w-full h-[2px] bg-cyan-500/20 mt-2 overflow-hidden rounded-full">
+            <p className="text-white font-bold tracking-widest"> [STATUS: SYNC_]</p>
+            <div className="w-full h-[2px] bg-cyan-500/20 mt-1 sm:mt-2 overflow-hidden rounded-full">
               <div className="w-1/2 h-full bg-cyan-400 animate-loading-bar" />
             </div>
           </div>

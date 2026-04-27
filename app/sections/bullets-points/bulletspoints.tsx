@@ -91,12 +91,12 @@ export default function AboutUsSection() {
       <div className="relative z-20 max-w-4xl text-left">
         <h2
           ref={headingRef}
-          className="font-michroma heading metallic-text glow-metal mb-12"
+          className="font-michroma heading metallic-text glow-metal mb-8 md:mb-12"
           style={{
             position: "relative",
             zIndex: 80,
             textAlign: "left",
-            fontSize: "clamp(1rem, 10vw, 5rem)",
+            fontSize: "clamp(1.5rem, 8vw, 5rem)",
             lineHeight: 0.9,
             pointerEvents: "none",
             willChange: "transform",
@@ -109,7 +109,7 @@ export default function AboutUsSection() {
           Marketing
         </h2>
         
-        <div className="space-y-16">
+        <div className="space-y-8 md:space-y-16">
           {[
             { id: "01", title: "PROPELLING BRANDS", desc: "Engineering high-velocity growth strategies for the digital era." },
             { id: "02", title: "INTERFACE EXCELLENCE", desc: "Crafting intuitive, high-tech digital flight decks with precision." },
@@ -118,15 +118,13 @@ export default function AboutUsSection() {
             <div 
               key={obj.id}
               ref={el => { missionObjectiveRefs.current[i] = el; }}
-              className="flex items-start space-x-6"
+              className="flex items-start space-x-4 md:space-x-6"
             >
-              {/* UPDATED SPAN: Reduced size to 10px and adjusted alignment */}
               <span 
-            
-                className="font-helvetica mt-1.5 metallic-text"
+                className="font-helvetica mt-1 metallic-text flex-shrink-0"
                 style={{ 
                   color: '#FFA500',
-                  fontSize: '38px',
+                  fontSize: 'clamp(20px, 5vw, 38px)',
                   letterSpacing: '1px',
                   textShadow: '0 0 10px rgba(255, 165, 0, 0.5)',
                   opacity: 0.8

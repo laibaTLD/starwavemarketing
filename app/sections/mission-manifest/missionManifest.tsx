@@ -35,7 +35,7 @@ export default function MissionManifest({ onBack, onLaunch }: MissionManifestPro
       })
       .to(containerRef.current, { 
         scaleY: 0.001, 
-        scaleX: 2, 
+        scaleX: 1, 
         opacity: 0, 
         filter: "brightness(5)",
         duration: 0.4, 
@@ -86,7 +86,7 @@ export default function MissionManifest({ onBack, onLaunch }: MissionManifestPro
   ];
 
   return (
-    <section ref={containerRef} className="relative bg-[#020406] text-white overflow-hidden font-mono" style={{ minHeight: "215vh", perspective: "1000px" }}>
+    <section ref={containerRef} className="relative bg-[#020406] text-white overflow-hidden font-mono" style={{ minHeight: "215vh", perspective: "1000px", overflow: "hidden" }}>
       
       {/* SHUTTLE FX */}
       <div ref={shuttleRef} className="fixed bottom-[-100px] left-1/2 -translate-x-1/2 opacity-0 pointer-events-none z-[100]">
@@ -106,24 +106,24 @@ export default function MissionManifest({ onBack, onLaunch }: MissionManifestPro
       </div>
 
       {/* HERO SECTION */}
-      <div className="phase-ingress h-screen flex flex-col justify-center items-center text-center px-6 relative">
-        <p className="text-cyan-400 tracking-[0.5em] text-[10px] mb-6 uppercase font-bold italic group-hover:glow">
+      <div className="phase-ingress h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 relative">
+        <p className="text-cyan-400 tracking-[0.3em] sm:tracking-[0.5em] text-[8px] sm:text-[10px] mb-4 sm:mb-6 uppercase font-bold italic">
           // SYSTEM INITIALIZATION COMPLETE //
         </p>
-        <h1 className="main-heading text-7xl md:text-[9rem] font-black italic mb-8 tracking-tighter leading-none">
+        <h1 className="main-heading text-5xl sm:text-6xl md:text-7xl lg:text-[9rem] font-black italic mb-6 sm:mb-8 tracking-tighter leading-none">
           STAR<span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-400 drop-shadow-[0_0_30px_rgba(0,255,255,0.3)]">WAVE</span>
         </h1>
-        <div className="max-w-4xl space-y-8">
-          <p className="text-lg md:text-xl text-white/60 leading-relaxed font-medium uppercase tracking-wide">
+        <div className="max-w-4xl space-y-6 sm:space-y-8 px-4">
+          <p className="text-sm sm:text-lg md:text-xl text-white/60 leading-relaxed font-medium uppercase tracking-wide">
             We engineer high-performance digital experiences with precision,
             motion, and scale. Our mission-critical approach ensures every pixel
             serves a purpose.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-8 sm:mt-12">
             {[ {t: "VELOCITY", c: "cyan"}, {t: "PRECISION", c: "orange"}, {t: "REACH", c: "green"} ].map((item) => (
-              <div key={item.t} className="p-6 border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-cyan-500/50 transition-all">
-                <h3 className={`text-${item.c}-400 font-black tracking-widest text-xs mb-3 group-hover:scale-110 transition-transform italic`}>{item.t}</h3>
-                <p className="text-white/50 text-[10px] leading-tight font-bold uppercase tracking-tighter italic">Mission Optimized Architecture</p>
+              <div key={item.t} className="p-4 sm:p-6 border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-cyan-500/50 transition-all">
+                <h3 className={`text-${item.c}-400 font-black tracking-widest text-xs mb-2 sm:mb-3 group-hover:scale-110 transition-transform italic`}>{item.t}</h3>
+                <p className="text-white/50 text-[9px] sm:text-[10px] leading-tight font-bold uppercase tracking-tighter italic">Mission Optimized Architecture</p>
               </div>
             ))}
           </div>
@@ -131,43 +131,43 @@ export default function MissionManifest({ onBack, onLaunch }: MissionManifestPro
       </div>
 
       {/* MISSION BRIEFING & SUMMARY SECTION */}
-      <div className="phase-summary min-h-screen py-24 flex items-center justify-center px-6">
-        <div className="summary-card max-w-6xl w-full text-center space-y-12">
+      <div className="phase-summary min-h-screen py-16 sm:py-24 flex items-center justify-center px-4 sm:px-6">
+        <div className="summary-card max-w-6xl w-full text-center space-y-8 sm:space-y-12">
           
-          <div className="inline-block px-8 py-3 border border-white/10 rounded-sm mb-4 bg-black/40 backdrop-blur-xl">
-             <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic">
+          <div className="inline-block px-4 sm:px-8 py-2 sm:py-3 border border-white/10 rounded-sm mb-4 bg-black/40 backdrop-blur-xl">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter italic">
               Mission <span className="text-cyan-400 drop-shadow-[0_0_15px_#00ffff]">Conclusion</span>
             </h2>
           </div>
 
-          <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-4xl mx-auto italic font-medium uppercase tracking-tight">
+          <p className="text-sm sm:text-lg md:text-xl text-white/70 leading-relaxed max-w-4xl mx-auto italic font-medium uppercase tracking-tight px-4">
             We engineer high-performance digital experiences with precision, motion, and scale. Our mission-critical approach ensures every interaction delivers measurable results.
           </p>
           
-          <div className="text-left space-y-6">
-            <h3 className="text-2xl font-black text-cyan-400 uppercase tracking-[0.3em] italic border-b border-cyan-400/20 pb-2">MISSION BRIEFING</h3>
+          <div className="text-left space-y-4 sm:space-y-6 px-4">
+            <h3 className="text-lg sm:text-2xl font-black text-cyan-400 uppercase tracking-[0.2em] sm:tracking-[0.3em] italic border-b border-cyan-400/20 pb-2">MISSION BRIEFING</h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              {[ 
                 { h: "PRIMARY OBJECTIVE", c: "orange", d: "Deploy ultra-fast web applications leveraging Next.js 15 architecture with server-side rendering and React Server Components for optimal performance and SEO rankings." },
                 { h: "TECHNICAL SPECIFICATIONS", c: "cyan", d: "Implement GSAP-powered 120Hz motion systems with precise scroll synchronization and micro-interactions for buttery-smooth user experiences across all devices." },
                 { h: "SEO OPTIMIZATION", c: "green", d: "Configure semantic HTML5 markup with structured data, meta tags, and lightning-fast indexing to achieve top search engine visibility and organic traffic growth." },
                 { h: "DEPLOYMENT STRATEGY", c: "purple", d: "Utilize Vercel Edge Network with global CDN distribution, automated CI/CD pipelines, and real-time monitoring for 99.99% uptime and sub-second response times." }
               ].map((card, i) => (
-                <div key={i} className="data-node p-8 border border-white/5 bg-[#0a0c0e] hover:border-white/20 transition-all relative overflow-hidden group">
+                <div key={i} className="data-node p-4 sm:p-8 border border-white/5 bg-[#0a0c0e] hover:border-white/20 transition-all relative overflow-hidden group">
                   <div className={`absolute top-0 left-0 w-[2px] h-full bg-${card.c}-400 group-hover:w-full group-hover:opacity-5 transition-all duration-500`} />
-                  <h4 className={`text-${card.c}-400 font-black text-xs tracking-widest mb-4 italic`}>// {card.h}</h4>
-                  <p className="text-white/60 text-sm leading-relaxed uppercase font-bold tracking-tighter italic group-hover:text-white transition-colors">{card.d}</p>
+                  <h4 className={`text-${card.c}-400 font-black text-[10px] sm:text-xs tracking-widest mb-2 sm:mb-4 italic`}>// {card.h}</h4>
+                  <p className="text-white/60 text-xs sm:text-sm leading-relaxed uppercase font-bold tracking-tighter italic group-hover:text-white transition-colors">{card.d}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="pt-12 space-y-10">
-            <p className="text-white/40 text-[10px] tracking-[0.8em] font-black uppercase italic animate-pulse">// SYSTEM_READINESS: OPTIMAL //</p>
-            <button onClick={handleLaunch} className="launch-btn group relative px-20 py-8 bg-transparent border-2 border-cyan-400 overflow-hidden">
+          <div className="pt-8 sm:pt-12 space-y-6 sm:space-y-10">
+            <p className="text-white/40 text-[8px] sm:text-[10px] tracking-[0.5em] sm:tracking-[0.8em] font-black uppercase italic animate-pulse">// SYSTEM_READINESS: OPTIMAL //</p>
+            <button onClick={handleLaunch} className="launch-btn group relative px-12 sm:px-20 py-5 sm:py-8 bg-transparent border-2 border-cyan-400 overflow-hidden">
               <div className="absolute inset-0 bg-cyan-400 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="relative z-10 text-cyan-400 group-hover:text-black font-black uppercase tracking-[1em] text-xl italic transition-colors">
+              <span className="relative z-10 text-cyan-400 group-hover:text-black font-black uppercase tracking-[0.5em] sm:tracking-[1em] text-sm sm:text-xl italic transition-colors">
                 Launch Project
               </span>
             </button>
@@ -177,11 +177,11 @@ export default function MissionManifest({ onBack, onLaunch }: MissionManifestPro
 
       {/* BACK BUTTON */}
       {onBack && (
-        <button onClick={handleBack} className="fixed top-10 left-10 z-[60] flex items-center gap-4 group">
-          <div className="w-12 h-12 border border-cyan-400/30 rounded-full flex items-center justify-center group-hover:bg-cyan-400 group-hover:border-cyan-400 transition-all">
-            <span className="text-cyan-400 group-hover:text-black text-sm font-bold transition-colors italic">←</span>
+        <button onClick={handleBack} className="fixed top-4 sm:top-10 left-4 sm:left-10 z-[60] flex items-center gap-2 sm:gap-4 group">
+          <div className="w-10 sm:w-12 h-10 sm:h-12 border border-cyan-400/30 rounded-full flex items-center justify-center group-hover:bg-cyan-400 group-hover:border-cyan-400 transition-all">
+            <span className="text-cyan-400 group-hover:text-black text-xs sm:text-sm font-bold transition-colors italic">←</span>
           </div>
-          <span className="text-[10px] text-cyan-400 tracking-[0.5em] font-black opacity-0 group-hover:opacity-100 transition-all uppercase italic">ABORT_MISSION</span>
+          <span className="text-[9px] sm:text-[10px] text-cyan-400 tracking-[0.3em] sm:tracking-[0.5em] font-black opacity-0 group-hover:opacity-100 transition-all uppercase italic hidden sm:block">ABORT_MISSION</span>
         </button>
       )}
 

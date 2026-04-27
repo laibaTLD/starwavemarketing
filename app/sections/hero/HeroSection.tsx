@@ -315,8 +315,8 @@ export default function HeroSection() {
         ref={signalStrengthRef}
         style={{
           position: "absolute",
-          bottom: "100px",
-          left: "20px",
+          bottom: "clamp(80px, 12vh, 100px)",
+          left: "clamp(10px, 2vw, 20px)",
           zIndex: 35,
           opacity: 0.5,
         }}
@@ -374,8 +374,8 @@ export default function HeroSection() {
         ref={connectingStatusRef}
         style={{
           position: "absolute",
-          bottom: "70px",
-          left: "20px",
+          bottom: "clamp(50px, 8vh, 70px)",
+          left: "clamp(10px, 2vw, 20px)",
           zIndex: 35,
           opacity: 0.5,
           display: "flex",
@@ -499,14 +499,15 @@ export default function HeroSection() {
         ref={hudGridRef}
         style={{
           position: "absolute",
-          bottom: "80px",
-          right: "20px",
+          bottom: "clamp(60px, 10vh, 80px)",
+          right: "clamp(10px, 2vw, 20px)",
           zIndex: 40,
-          width: "280px",
+          width: "clamp(200px, 40vw, 280px)",
+          maxWidth: "90vw",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "20px",
-          padding: "15px",
+          gap: "clamp(10px, 2vw, 20px)",
+          padding: "clamp(8px, 2vw, 15px)",
           background: "radial-gradient(circle at 30% 50%, rgba(0, 10, 30, 0.8), rgba(0, 5, 20, 0.9)), repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 255, 255, 0.03) 2px, rgba(0, 255, 255, 0.03) 4px)",
           border: "1px solid rgba(0, 255, 255, 0.2)",
           borderRadius: "4px",
@@ -517,11 +518,11 @@ export default function HeroSection() {
         <div
           ref={missionStatusRef}
           style={{
-            fontSize: "11px",
+            fontSize: "clamp(8px, 1.5vw, 11px)",
             color: "#00ff00",
             fontFamily: "monospace",
             textTransform: "uppercase",
-            letterSpacing: "1px",
+            letterSpacing: "clamp(0.5px, 0.5vw, 1px)",
             lineHeight: "1.4",
             filter: "drop-shadow(0 0 10px rgba(0, 255, 255, 0.2))",
           }}
@@ -535,19 +536,19 @@ export default function HeroSection() {
         <div
           ref={coordinatesRef}
           style={{
-            fontSize: "12px",
+            fontSize: "clamp(9px, 1.8vw, 12px)",
             color: "#00ff00",
             fontFamily: "monospace",
             letterSpacing: "0.5px",
             lineHeight: "1.3",
             textAlign: "left",
-            paddingLeft: "20px",
+            paddingLeft: "clamp(8px, 2vw, 20px)",
             filter: "drop-shadow(0 0 10px rgba(0, 255, 255, 0.2))",
           }}
         >
           <div>LAT: 28.5728</div>
           <div style={{ marginTop: "2px" }}>LONG: -80.6490</div>
-          <div style={{ marginTop: "6px", fontSize: "10px" }}>ALT: 42.3511 km</div>
+          <div style={{ marginTop: "6px", fontSize: "clamp(8px, 1.5vw, 10px)" }}>ALT: 42.3511 km</div>
         </div>
       </div>
 
